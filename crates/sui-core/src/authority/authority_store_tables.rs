@@ -439,7 +439,7 @@ fn events_table_default_config() -> DBOptions {
 
 fn indirect_move_objects_table_default_config() -> DBOptions {
     let mut options = optimized_for_high_throughput_options(
-        read_size_from_env(ENV_VAR_INDIRECT_OBJECTS_BLOCK_CACHE_SIZE).unwrap_or(512),
+        read_size_from_env(ENV_VAR_INDIRECT_OBJECTS_BLOCK_CACHE_SIZE).unwrap_or(5 * 1024),
         true,
     );
     options.options.set_merge_operator(
